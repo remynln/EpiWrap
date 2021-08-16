@@ -4,7 +4,7 @@ This is a wrapper for the epitech intranet 'api'
 
 **installation**
 ````python
-pip install epiwrap
+pip install epiwrap 
 ````
 
 You can see here some examples:
