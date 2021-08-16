@@ -11,10 +11,14 @@ class EpiError(Exception):
 
 
 class Student(object):
-    """coucou"""
+    """Student class"""
     def __init__(self, token, header):
         try:
-            res = r.get("https://intra.epitech.eu/user/?format=json", headers=header, cookies=token).json()
+            res = r.get("https://intra.epitech.eu/user/?format=json", headers=header, cookies=token)
+            print("code: " + str(res.status_code))
+            if res.status_code == 403:
+                raise EpiError("Bad token/Not connected")
+            res = res.json()
             self.fullname = res["title"]
             self.gpa = res["gpa"][0]["gpa"]
             self.firstname = res["firstname"]
