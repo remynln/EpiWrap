@@ -1,27 +1,19 @@
-# IMPORTANT:
-This is a rewrite of Wrapitech with the new Oauth2 from the intra go check [here](https://github.com/Epiteks/Wrapitech)
+# EpiWrap
 
-##Usage
-main route:
-````html
-https://etipech.eu/api
-````
+This is a wrapper for the epitech intranet 'api'
 
-Info route ``/v1/infos``
-````
-arguments: 
-  token *
-````
+You can see here some examples:
 
-Info route ``/v1/planning``
-````
-arguments: 
-  token *
-  start_time: format: year-month-day (optional)
-  end_time: format: year-month-day (optional)
+````python
+import epiwrap
+
+client = epiwrap.EpiWrap("your token here")
+
+user = client.getProfile()
+
+print("Name: " + user.fullname + "\nCredits: " + str(user.credits))
 ````
 
-`*` = mendatory argument
 
 ## How to get your token ?
 
