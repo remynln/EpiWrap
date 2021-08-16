@@ -1,0 +1,1 @@
+In this folder i'm gonna write every single things I've understand on the api, feel free to do a [pull request](https://github.com/Waz0x/EpiWrap/pulls) if you have something to add.
