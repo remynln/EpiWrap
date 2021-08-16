@@ -14,7 +14,7 @@ format of date:
     - year-month-day
 ````
 
-You can send a payload in the url to add more parameters, this should look like this:
+You can send a payload in the request to add more parameters, this should look like this:
 ````json
 {
   "planning": "key=planning&value=%7B%22location%22%3A%22FR%2FTLS%22%2C%22semester%22%3A%220%7C1%7C2%7C3%7C4%7C5%7C6%22%2C%22student%22%3A%221%7C1%7C0%22%7D"
