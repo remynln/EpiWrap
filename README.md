@@ -5,9 +5,9 @@ This is a wrapper for the epitech intranet 'api'
 You can see here some examples:
 
 ````python
-import epiwrap
+from epiwrap import intra
 
-client = epiwrap.EpiWrap("your token here")
+client = intra.EpiWrap("your token here")
 
 user = client.getProfile()
 
