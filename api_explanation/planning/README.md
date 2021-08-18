@@ -14,7 +14,8 @@ format of date:
     - year-month-day
 ````
 
-You can't get special infos like only semester 2 but the intranet have a special request with this body, check [(1)](#1)
+You can't get special infos like only semester 2 but the intranet have a special request with this body, check [(1)](#1)  
+I don't know what to do with it but i write it here in case
 ````json
 {
   "planning": "key=planning&value=%7B%22location%22%3A%22FR%2FTLS%22%2C%22semester%22%3A%220%7C1%7C2%7C3%7C4%7C5%7C6%22%2C%22student%22%3A%221%7C1%7C0%22%7D"
