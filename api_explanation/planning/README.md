@@ -33,4 +33,4 @@ semester refer to this:
 
 and student this:  
 ![img.png](images/student.png)  
-**where 1 means it's unchecked and 0 checked (logik)**
+**where 1 means it's checked and 0 unchecked (logik)**
