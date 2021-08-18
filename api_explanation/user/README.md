@@ -9,3 +9,4 @@ Nothing very special, just basic infos about the user, you can get the netsoul w
 ````
 https://intra.epitech.eu/user/<mail-adress>/netsoul/?format=json
 ````
+
