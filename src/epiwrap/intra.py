@@ -1,6 +1,5 @@
 import requests as r
 
-
 class EpiError(Exception):
     def __init__(self, err):
         self.message = err
@@ -9,6 +8,8 @@ class EpiError(Exception):
     def __str__(self):
         return repr(self.value)
 
+    def __repr__(self):
+        return str(self)
 
 class Student(object):
     """Student class"""
