@@ -49,15 +49,15 @@ class EpiWrap(object):
         self._token = {"user": token}
         self._headers = {"Content-Type": "application/json", "Accept-Language": "fr,en-US;q=0.8,en;q=0.6"}
 
-    def getToken(self):
+    def get_token(self):
         return self._token
 
-    def getHeader(self):
+    def get_header(self):
         return self._headers
 
-    def getProfile(self):
+    def get_profile(self):
         try:
-            student = Student(self.getToken(), self.getHeader())
+            student = Student(self.get_token(), self.get_header())
             return student
         except EpiError as e:
             print(e)

@@ -14,7 +14,7 @@ from epiwrap import intra
 
 client = intra.EpiWrap("your token here")
 
-user = client.getProfile()
+user = client.get_profile()
 
 print("Name: " + user.fullname + "\nCredits: " + str(user.credits))
 ````
