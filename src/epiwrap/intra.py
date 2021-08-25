@@ -13,10 +13,13 @@ class EpiError(Exception):
 
 class Student(object):
     """Student class"""
-    def __init__(self, token, header):
+    def __init__(self, epiwrap):
         try:
-            res = r.get("https://intra.epitech.eu/user/?format=json", headers=header, cookies=token)
-            print("code: " + str(res.status_code))
+            res = r.get(
+                epiwrap.get_url() + "/user/?format=json",
+                         headers=epiwrap.get_header(),
+                         cookies=epiwrap.get_token()
+                        )
             if res.status_code == 403:
                 raise EpiError("Bad token/Not connected")
             res = res.json()
@@ -35,10 +38,10 @@ class Student(object):
 class EpiWrap(object):
     """Simple local wrapper for epitech intra"""
 
-    def __init__(self, token):
+    def __init__(self, token="", autolog="https://intra.epitech.eu"):
         """Enter token in parameters to initiate the client"""
         self._done = False
-        self._url = ""
+        self._url = autolog
         self._types = {"GET": r.get,
                        "POST": r.post,
                        "DELETE": r.delete}
@@ -52,12 +55,15 @@ class EpiWrap(object):
     def get_token(self):
         return self._token
 
+    def get_url(self):
+        return self._url
+
     def get_header(self):
         return self._headers
 
     def get_profile(self):
         try:
-            student = Student(self.get_token(), self.get_header())
+            student = Student(self)
             return student
         except EpiError as e:
             print(e)
