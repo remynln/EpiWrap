@@ -12,7 +12,7 @@ You can see here some examples:
 ````python
 from epiwrap import intra
 
-client = intra.EpiWrap("your token here")
+client = intra.EpiWrap(token="your token" or autolog="autolog link")
 
 user = client.get_profile()
 
@@ -21,6 +21,7 @@ print("Name: " + user.fullname + "\nCredits: " + str(user.credits))
 
 
 ## How to get your token ?
+(token are limited in time but not autolog link so it's better to use autolog)
 
 You must be connected to the [intranet](https://intra.epitech.eu/)
 
