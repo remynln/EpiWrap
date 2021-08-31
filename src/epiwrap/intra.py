@@ -1,4 +1,5 @@
 import requests as r
+import datetime
 
 class EpiError(Exception):
     def __init__(self, err):
@@ -8,21 +9,42 @@ class EpiError(Exception):
     def __str__(self):
         return repr(self.value)
 
-    def __repr__(self):
-        return str(self)
+
+class Module(object):
+    def __init__(self, ew, module, code, year=datetime.datetime.now().year):
+        self.title = ""
+        self.end_register = ""
+        self.end = ""
+        self.credit = ""
+        self.student_grade = ""
+        self.activites = []
+        res = r.get(
+            ew.get_url() + "/module/" + str(year) + "/" + module + "/" + code + "/?format=json",
+            headers=ew.get_header(),
+            cookies=ew.get_token()
+        )
+        if res.status_code == 403:
+            raise EpiError("Bad token/Not connected")
+        res = res.json()
+        for i in res:
+            self.__setattr__(i, res[i])
+
+
 
 class Student(object):
     """Student class"""
-    def __init__(self, epiwrap):
+    def __init__(self, ew):
         try:
             res = r.get(
-                epiwrap.get_url() + "/user/?format=json",
-                         headers=epiwrap.get_header(),
-                         cookies=epiwrap.get_token()
+                ew.get_url() + "/user/?format=json",
+                         headers=ew.get_header(),
+                         cookies=ew.get_token()
                         )
             if res.status_code == 403:
                 raise EpiError("Bad token/Not connected")
             res = res.json()
+            for i in res:
+                self.__setattr__(i, res[i])
             self.fullname = res["title"]
             self.gpa = res["gpa"][0]["gpa"]
             self.firstname = res["firstname"]
@@ -67,3 +89,7 @@ class EpiWrap(object):
             return student
         except EpiError as e:
             print(e)
+
+    def get_module(self, module, code):
+        mod = Module(self, module, code)
+        return mod

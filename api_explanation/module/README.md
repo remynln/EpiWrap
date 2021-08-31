@@ -9,7 +9,7 @@ year: the year on format ``2021``
 module_code: module code, ex for the runner in tek1 
 ````
 B-MUL-100
-B: I don't know why
+B: B for bachelor, C for CodAc, or M for master ...
 MUL: Name of the module
 100 |
     | 1 -> semester
