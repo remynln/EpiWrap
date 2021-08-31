@@ -19,6 +19,7 @@ user = client.get_profile()
 print("Name: " + user.fullname + "\nCredits: " + str(user.credits))
 ````
 
+Go check the [wiki](https://github.com/Waz0x/EpiWrap/wiki) for more informations
 
 ## How to get your token ?
 (token are limited in time but not autolog link so it's better to use autolog)
