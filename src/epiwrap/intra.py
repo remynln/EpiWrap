@@ -33,12 +33,12 @@ class Module(object):
 
 class Student(object):
     """Student class"""
-    def __init__(self, epiwrap):
+    def __init__(self, ew):
         try:
             res = r.get(
-                epiwrap.get_url() + "/user/?format=json",
-                         headers=epiwrap.get_header(),
-                         cookies=epiwrap.get_token()
+                ew.get_url() + "/user/?format=json",
+                         headers=ew.get_header(),
+                         cookies=ew.get_token()
                         )
             if res.status_code == 403:
                 raise EpiError("Bad token/Not connected")
