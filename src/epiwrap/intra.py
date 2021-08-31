@@ -17,7 +17,7 @@ class Module(object):
         self.end = ""
         self.credit = ""
         self.student_grade = ""
-        self.activities = []
+        self.activites = []
         res = r.get(
             ew.get_url() + "/module/" + str(year) + "/" + module + "/" + code + "/?format=json",
             headers=ew.get_header(),
