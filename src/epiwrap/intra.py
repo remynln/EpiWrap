@@ -1,5 +1,6 @@
 import requests as r
 import datetime
+from difflib import SequenceMatcher
 
 class EpiError(Exception):
     def __init__(self, err):
@@ -11,7 +12,7 @@ class EpiError(Exception):
 
 
 class Module(object):
-    def __init__(self, ew, module, code, year=datetime.datetime.now().year):
+    def __init__(self, ew, module):
         self.title = ""
         self.end_register = ""
         self.end = ""
@@ -19,13 +20,20 @@ class Module(object):
         self.student_grade = ""
         self.activites = []
         res = r.get(
-            ew.get_url() + "/module/" + str(year) + "/" + module + "/" + code + "/?format=json",
+            ew.get_url() + "/course/filter?format=json",
             headers=ew.get_header(),
             cookies=ew.get_token()
         )
         if res.status_code == 403:
             raise EpiError("Bad token/Not connected")
         res = res.json()
+        tmp = 0
+        for i in res:
+            j = SequenceMatcher(None, str(i["code"]).lower(), str(module).lower()).ratio() * 100
+            if j > tmp:
+                res = i
+                tmp = j
+
         for i in res:
             self.__setattr__(i, res[i])
 
@@ -90,6 +98,6 @@ class EpiWrap(object):
         except EpiError as e:
             print(e)
 
-    def get_module(self, module, code):
-        mod = Module(self, module, code)
+    def get_module(self, module):
+        mod = Module(self, module)
         return mod
